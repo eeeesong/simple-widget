@@ -165,8 +165,8 @@ struct SimpleWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             SimpleWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("나의 여행 위젯")
+        .description("당신이 브리즈번으로 떠난다면 이런 위젯!")
         .supportedFamilies([.systemSmall,.systemMedium])
     }
 }
