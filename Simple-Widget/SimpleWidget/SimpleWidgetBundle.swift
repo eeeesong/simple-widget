@@ -12,6 +12,5 @@ import SwiftUI
 struct SimpleWidgetBundle: WidgetBundle {
     var body: some Widget {
         SimpleWidget()
-        SimpleWidgetLiveActivity()
     }
 }
