@@ -27,6 +27,12 @@ final class TravelData: ObservableObject {
                  Tour(name: "열대우림 가이드 투어", date: "20230307".convertToDate()),
                  Tour(name: "몰튼 아일랜드 모래섬 액티비티", date: "20230311".convertToDate())]
     }
+    
+    func changeStartDate(to string: String) {
+        let newDate = string.convertToDate()
+        let newTravel = Travel(city: travel.city, imageName: travel.imageName, startAt: newDate, endAt: travel.endAt)
+        travel = newTravel
+    }
 }
 
 struct Travel {

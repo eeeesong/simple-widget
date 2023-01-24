@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     @ObservedObject var travelData = TravelData.shared
     @State var isAnimating = false
+    @State var startAt: String = ""
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -49,42 +51,67 @@ struct ContentView: View {
                     }
                     
                 }.padding([.bottom], 10)
-                ZStack {
-                    Image(travelData.travel.imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 150, alignment: .center)
-                        .clipped()
-                        .cornerRadius(30)
-                    Text(travelData.travel.startAt.dDayString())
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.white)
-                }
-                VStack(alignment: .leading) {
-                    ForEach(travelData.tours.sorted(by: { item1, item2 in
-                        item1.date < item2.date
-                    }), id: \.self.name) { item in
-                        ZStack(alignment: .leading) {
-                            Color.mint
-                                .cornerRadius(30)
-                            HStack(alignment: .center) {
-                                Text(item.date.dDayString())
-                                    .bold()
-                                    .padding([.leading], 30)
-                                Spacer()
-                                Text(item.name)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.6)
-                                    .padding([.trailing], 30)
+                ScrollView {
+                    ZStack {
+                        Image(travelData.travel.imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: 150, alignment: .center)
+                            .clipped()
+                            .cornerRadius(30)
+                        Text(travelData.travel.startAt.dDayString())
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    VStack(alignment: .leading) {
+                        ForEach(travelData.tours.sorted(by: { item1, item2 in
+                            item1.date < item2.date
+                        }), id: \.self.name) { item in
+                            ZStack(alignment: .leading) {
+                                Color(uiColor: .secondarySystemBackground)
+                                    .cornerRadius(30)
+                                HStack(alignment: .center) {
+                                    Text(item.date.dDayString())
+                                        .bold()
+                                        .padding([.leading], 30)
+                                    Spacer()
+                                    Text(item.name)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.6)
+                                        .padding([.trailing], 30)
+                                }
                             }
+                            .frame(height: 80)
                         }
-                        .frame(height: 100)
+                    }
+                    .padding([.bottom], 30)
+                    VStack(alignment: .leading) {
+                        Text("출발일 변경하기")
+                            .bold()
+                        HStack {
+                            TextField("YYYYMMdd 형식으로 입력", text: $startAt)
+                                .keyboardType(.numberPad)
+                                .padding()
+                                .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(20)
+                            Button(action: changeStartDate) {
+                                Text("변경")
+                            }
+                            .padding()
+                        }
+                        .ignoresSafeArea(.keyboard)
                     }
                 }
             }
         }
         .padding()
+    }
+    
+    private func changeStartDate() {
+        travelData.changeStartDate(to: startAt)
+        startAt = ""
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
