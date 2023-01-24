@@ -19,6 +19,8 @@
 		2214263A297E4DF4004E878A /* SimpleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22142636297E4DF3004E878A /* SimpleWidget.intentdefinition */; };
 		2214263B297E4DF4004E878A /* SimpleWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 22142636297E4DF3004E878A /* SimpleWidget.intentdefinition */; };
 		2214263E297E4DF4004E878A /* SimpleWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 22142629297E4DF3004E878A /* SimpleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		22142644297FFB72004E878A /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22142643297FFB72004E878A /* TravelData.swift */; };
+		22142645297FFB72004E878A /* TravelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22142643297FFB72004E878A /* TravelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 		22142636297E4DF3004E878A /* SimpleWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SimpleWidget.intentdefinition; sourceTree = "<group>"; };
 		22142637297E4DF4004E878A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22142639297E4DF4004E878A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22142643297FFB72004E878A /* TravelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 			children = (
 				22142616297E4BF2004E878A /* Simple_WidgetApp.swift */,
 				22142618297E4BF2004E878A /* ContentView.swift */,
+				22142643297FFB72004E878A /* TravelData.swift */,
 				2214261A297E4BF4004E878A /* Assets.xcassets */,
 				2214261C297E4BF4004E878A /* Simple_Widget.entitlements */,
 				2214261D297E4BF4004E878A /* Preview Content */,
@@ -246,6 +250,7 @@
 				22142619297E4BF2004E878A /* ContentView.swift in Sources */,
 				22142617297E4BF2004E878A /* Simple_WidgetApp.swift in Sources */,
 				2214263B297E4DF4004E878A /* SimpleWidget.intentdefinition in Sources */,
+				22142644297FFB72004E878A /* TravelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +261,7 @@
 				2214263A297E4DF4004E878A /* SimpleWidget.intentdefinition in Sources */,
 				22142631297E4DF3004E878A /* SimpleWidgetBundle.swift in Sources */,
 				22142635297E4DF3004E878A /* SimpleWidget.swift in Sources */,
+				22142645297FFB72004E878A /* TravelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

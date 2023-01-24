@@ -76,7 +76,7 @@ struct SimpleWidgetEntryView : View {
                         .bold()
                         .font(.subheadline)
                         .foregroundColor(.white)
-                    Text(dDay(from: entry.date) + " ✈️")
+                    Text(entry.date.dDayString() + " ✈️")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .bold()
@@ -100,7 +100,7 @@ struct SimpleWidgetEntryView : View {
                             .bold()
                             .font(.subheadline)
                             .foregroundColor(.white)
-                        Text(dDay(from: entry.date) + " ✈️")
+                        Text(entry.date.dDayString() + " ✈️")
                             .font(.largeTitle)
                             .foregroundColor(.white)
                             .bold()
@@ -125,7 +125,7 @@ struct SimpleWidgetEntryView : View {
                                     Color(.green)
                                         .cornerRadius(4)
                                         .frame(width: 8, height: 8)
-                                    Text(dDay(from: item.date))
+                                    Text(item.date.dDayString())
                                         .bold()
                                         .foregroundColor(.white)
                                         .font(.caption2)
@@ -147,14 +147,6 @@ struct SimpleWidgetEntryView : View {
                 
             }
         }
-    }
-    
-    private func dDay(from date: Date) -> String {
-        let day = Calendar.current.dateComponents([.day], from: date, to: Date()).day
-        guard let day else {
-            return "D-??"
-        }
-        return "D\(day - 1)"
     }
 }
 
