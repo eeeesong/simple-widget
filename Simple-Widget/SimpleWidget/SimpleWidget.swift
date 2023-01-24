@@ -20,16 +20,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entry = SimpleEntry(configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: [SimpleEntry(configuration: configuration)], policy: .atEnd)
         completion(timeline)
     }
 }
@@ -49,10 +40,6 @@ struct SimpleEntry: TimelineEntry {
         temperature = 25
         tours = travelData.tours.map { ($0.date, $0.name) }
         self.configuration = configuration
-    }
-    
-    static func randomDate() -> Date {
-        return Calendar.current.date(byAdding: .day, value: Int.random(in: 24...40), to: Date()) ?? Date()
     }
 }
 
