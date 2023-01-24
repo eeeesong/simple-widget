@@ -43,14 +43,12 @@ struct SimpleEntry: TimelineEntry {
     let tours: [(date: Date, name: String)]
     let configuration: ConfigurationIntent
     
-    init(configuration: ConfigurationIntent) {
-        imageName = "aus"
-        city = "브리즈번"
-        date = Calendar.current.date(byAdding: .day, value: 24, to: Date()) ?? Date()
+    init(configuration: ConfigurationIntent, travelData: TravelData = TravelData.shared) {
+        imageName = travelData.travel.imageName
+        city = travelData.travel.city
+        date = travelData.travel.startAt
         temperature = 25
-        tours = [(date: SimpleEntry.randomDate(), name: "코알라 보호구역 투어"),
-                 (date: SimpleEntry.randomDate(), name: "열대우림 가이드 투어"),
-                 (date: SimpleEntry.randomDate(), name: "모래섬 액티비티 캠핑")]
+        tours = travelData.tours.map { ($0.date, $0.name) }
         self.configuration = configuration
     }
     
